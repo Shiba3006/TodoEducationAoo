@@ -7,6 +7,11 @@ import 'package:to_do/shared/cubit/states.dart';
 import 'layout/home_layout/home_layout.dart';
 
 void main() {
+  bool isReleasedMode = const bool.fromEnvironment('dart.vm.product');
+  if (isReleasedMode) {
+    debugPrint = (String? message, {int? wrapWidth}) => {};
+  }
+
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
     blocObserver: MyBlocObserver(),

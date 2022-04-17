@@ -1,6 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do/layout/home_layout/home_layout.dart';
+import 'package:to_do/modules/default_screen/default_screen.dart';
+import 'package:to_do/modules/finished_screen/finished_screen.dart';
+import 'package:to_do/modules/wishlist_screen/wishlist_screen.dart';
+import 'package:to_do/shared/components/components.dart';
 import 'package:to_do/shared/cubit/states.dart';
 
 class ToDoCubit extends Cubit<ToDoState> {
@@ -16,11 +21,17 @@ class ToDoCubit extends Cubit<ToDoState> {
     );
   }).toList();
 
-  String dropdownValue = 'One';
+  var dropdownValue = 'One';
 
   void changeValue ({required value}) {
     dropdownValue = value!;
     emit(ToDoStateChangeDropDown());
+  }
+
+  void changeScreen (context,Widget widget,){
+    Navigator.pop(context);
+    navigateTo (widget: widget, context: context);
+    emit(ToDoStateChangeScreen());
   }
 
   }

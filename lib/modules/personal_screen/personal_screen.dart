@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FinishedsScreen extends StatelessWidget {
-  const FinishedsScreen({Key? key}) : super(key: key);
+class PersonalScreen extends StatelessWidget {
+  const PersonalScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class FinishedsScreen extends StatelessWidget {
       appBar: AppBar(),
       body:
       Container(
-        child: Center(child: Text('finished lost',)),
+        child: Center(child: Text('Personal lost',)),
       ),
     );
   }
