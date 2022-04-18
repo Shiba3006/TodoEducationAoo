@@ -117,18 +117,12 @@ PreferredSizeWidget myAppBar ({required String appBarTitle}) => AppBar(
     appBarTitle,
   ),
   actions: const [
-    Icon(
-      Icons.search,
-    ),
-    SizedBox(
-      width: 10.0,
-    ),
     Padding(
       padding: EdgeInsetsDirectional.only(
-        end: 8.0,
+        end: 10.0,
       ),
       child: Icon(
-        Icons.settings,
+        Icons.search,
       ),
     ),
   ],
