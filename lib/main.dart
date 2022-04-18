@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:to_do/shared/cubit/bloc_observer.dart';
 import 'package:to_do/shared/cubit/cubit.dart';
 import 'package:to_do/shared/cubit/states.dart';
@@ -32,7 +33,40 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                primarySwatch: Colors.blue,
+                canvasColor: HexColor('fffff4'),
+                scaffoldBackgroundColor: HexColor('fffff2'),
+                iconTheme: const IconThemeData(
+                  color: Colors.black,
+                ),
+                textTheme: const TextTheme(
+                  bodyText1: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.0,
+                    color: Colors.black,
+                  ),
+                ),
+                appBarTheme: AppBarTheme(
+                  color: HexColor('f9f9f9'),
+                  titleTextStyle: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                  iconTheme: const IconThemeData(
+                    color: Colors.black,
+                  ),
+                ),
+                floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: HexColor('f9f1f1'),
+                  foregroundColor: Colors.black,
+                ),
+              ),
+              darkTheme: ThemeData(
+                canvasColor: HexColor('558099'),
+                scaffoldBackgroundColor: HexColor('448899'),
+                appBarTheme: AppBarTheme(
+                  color: HexColor('558099'),
+                ),
               ),
               home: const HomeLayout(),
             );

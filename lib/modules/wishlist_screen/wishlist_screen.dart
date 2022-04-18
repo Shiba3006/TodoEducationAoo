@@ -1,17 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do/shared/components/components.dart';
+import 'package:to_do/shared/cubit/cubit.dart';
+import 'package:to_do/shared/cubit/states.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body:
-      Container(
-        child: Center(child: Text('wish lost',)),
-      ),
+    var cubit = ToDoCubit.get(context);
+    String appBarTitle = 'Wishlist';
+    return BlocConsumer<ToDoCubit, ToDoState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: myAppBar(appBarTitle: appBarTitle),
+          drawer: drawerBuilder(context: context, cubit: cubit,),
+          body: myFloatingActionButton(),
+        );
+      },
     );
   }
 }

@@ -1,17 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do/shared/components/components.dart';
+import 'package:to_do/shared/cubit/cubit.dart';
+import 'package:to_do/shared/cubit/states.dart';
 
-class FinishedsScreen extends StatelessWidget {
-  const FinishedsScreen({Key? key}) : super(key: key);
+class FinishedScreen extends StatelessWidget {
+  const FinishedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body:
-      Container(
-        child: Center(child: Text('finished lost',)),
-      ),
+    var cubit = ToDoCubit.get(context);
+    String appBarTitle = 'Finished';
+    return BlocConsumer<ToDoCubit, ToDoState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: myAppBar(appBarTitle: appBarTitle),
+          drawer: drawerBuilder(context: context, cubit: cubit,),
+          body: myFloatingActionButton(),
+        );
+      },
     );
   }
 }
