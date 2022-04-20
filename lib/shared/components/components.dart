@@ -11,6 +11,7 @@ import 'package:to_do/modules/wishlist_screen/wishlist_screen.dart';
 import 'package:to_do/modules/work_screen/work_screen.dart';
 
 Widget drawerItemBuilder ({
+  required BuildContext context,
   required IconData icon,
   required String title,
   void Function()? onTap,
@@ -18,10 +19,7 @@ Widget drawerItemBuilder ({
   leading: Icon(icon,),
   title: Text(
     title,
-    style: const TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.bold,
-    ),
+    style: Theme.of(context).textTheme.bodyText1,
   ),
   onTap: onTap,
 );
@@ -45,37 +43,44 @@ Widget drawerBuilder ({
             runSpacing: 14.0,
             children: [
               drawerItemBuilder(
+                context: context,
                 icon: Icons.home,
                 title: 'Home',
                 onTap: () => cubit.changeScreen(context, const HomeLayout(),),
               ),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.format_list_bulleted_outlined,
                 title: 'Default',
                 onTap: () => cubit.changeScreen(context, const DefaultScreen(),),
               ),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.format_list_bulleted_outlined,
                 title: 'Personal',
                 onTap: () => cubit.changeScreen(context, const PersonalScreen(),),
               ),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.format_list_bulleted_outlined,
                 title: 'Wishlist',
                 onTap: () => cubit.changeScreen(context, const WishlistScreen(),),
               ),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.format_list_bulleted_outlined,
                 title: 'Work',
                 onTap: () => cubit.changeScreen(context, const WorkScreen(),),
               ),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.format_list_bulleted_outlined,
                 title: 'Finished',
                 onTap: () => cubit.changeScreen(context, const FinishedScreen(),),
               ),
               myDivider(),
               drawerItemBuilder(
+                context: context,
                 icon: Icons.settings,
                 title: 'Setting',
                 onTap: () => cubit.changeScreen(context, const SettingScreen(),),
@@ -105,6 +110,7 @@ Widget myFloatingActionButton () => Padding(
           },
           child: const Icon(
             Icons.add,
+            size: 30.0,
           ),
         ),
       ],

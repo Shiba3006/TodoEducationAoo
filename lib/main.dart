@@ -33,8 +33,10 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                canvasColor: HexColor('fffff4'),
-                scaffoldBackgroundColor: HexColor('fffff2'),
+                canvasColor: HexColor(
+                    'fffff4'),
+                scaffoldBackgroundColor: HexColor(
+                    'fffff2'),
                 iconTheme: const IconThemeData(
                   color: Colors.black,
                 ),
@@ -62,12 +64,40 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               darkTheme: ThemeData(
-                canvasColor: HexColor('558099'),
-                scaffoldBackgroundColor: HexColor('448899'),
+                canvasColor: HexColor(
+                    '004c4c'),
+                scaffoldBackgroundColor: HexColor(
+                    '006666'),
+                iconTheme: const IconThemeData(
+                  color: Colors.white70,
+                ),
+                textTheme: const TextTheme(
+                  bodyText1: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.0,
+                    color: Colors.white70,
+                  ),
+                ),
                 appBarTheme: AppBarTheme(
-                  color: HexColor('558099'),
+                  color: HexColor(
+                      '004c4c'),
+                  titleTextStyle: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white70,
+                  ),
+                  iconTheme: const IconThemeData(
+                    color: Colors.white70,
+                  ),
+                ),
+                floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: HexColor(
+                      'b2d8d8',),
+                  foregroundColor: HexColor(
+                      '004c4c',),
                 ),
               ),
+              themeMode:  ToDoCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
               home: const HomeLayout(),
             );
           },

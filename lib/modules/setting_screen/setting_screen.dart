@@ -18,6 +18,18 @@ class SettingScreen extends StatelessWidget {
         return Scaffold(
           appBar: myAppBar(appBarTitle: appBarTitle),
           drawer: drawerBuilder(context: context, cubit: cubit,),
+          body: Column(
+            children: [
+              CheckboxListTile(
+                activeColor: Colors.red,
+                checkColor: Colors.white,
+                value: cubit.isDark,
+                onChanged: (bool? value) => cubit.changeThemeMode(value!),
+                title: const Text('Dark Mode',),
+                subtitle: Text(cubit.subtitleCheckBox),
+              ),
+            ],
+          ),
         );
       },
     );

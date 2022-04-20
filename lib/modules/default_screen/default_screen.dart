@@ -12,7 +12,7 @@ class DefaultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = ToDoCubit.get(context);
-    String appBarTitle = 'Defaul';
+    String appBarTitle = 'Default';
     return BlocConsumer<ToDoCubit, ToDoState>(
       listener: (context, state) {},
       builder: (context, state) {
