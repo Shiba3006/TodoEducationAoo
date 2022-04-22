@@ -4,29 +4,39 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:to_do/shared/cubit/bloc_observer.dart';
 import 'package:to_do/shared/cubit/cubit.dart';
 import 'package:to_do/shared/cubit/states.dart';
+import 'package:to_do/shared/network/cashe_helper.dart';
 
 import 'layout/home_layout/home_layout.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   bool isReleasedMode = const bool.fromEnvironment('dart.vm.product');
   if (isReleasedMode) {
     debugPrint = (String? message, {int? wrapWidth}) => {};
   }
 
+  await CacheHelper.init();
+  bool? isDark = CacheHelper.getBoolean(key: 'isDark');
+
   BlocOverrides.runZoned(
-    () => runApp(const MyApp()),
+    () => runApp(MyApp(
+      isDark: isDark,
+    )),
     blocObserver: MyBlocObserver(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.isDark}) : super(key: key);
+
+  final bool? isDark;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (BuildContext context) => ToDoCubit(),
+        create: (BuildContext context) => ToDoCubit()..changeThemeMode(fromShared: isDark),
         child: BlocConsumer<ToDoCubit, ToDoState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -35,6 +45,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 canvasColor: HexColor(
                     'fffff4'),
+                unselectedWidgetColor: Colors.black,
                 scaffoldBackgroundColor: HexColor(
                     'fffff2'),
                 iconTheme: const IconThemeData(
@@ -66,6 +77,7 @@ class MyApp extends StatelessWidget {
               darkTheme: ThemeData(
                 canvasColor: HexColor(
                     '004c4c'),
+                unselectedWidgetColor: Colors.white,
                 scaffoldBackgroundColor: HexColor(
                     '006666'),
                 iconTheme: const IconThemeData(

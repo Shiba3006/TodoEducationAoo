@@ -19,7 +19,19 @@ class HomeLayout extends StatelessWidget { // All Lists
         return Scaffold(
           appBar: myAppBar(appBarTitle: appBarTitle),
           drawer: drawerBuilder(context: context, cubit: cubit,),
-          body: myFloatingActionButton(),
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  myFloatingActionButton(),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

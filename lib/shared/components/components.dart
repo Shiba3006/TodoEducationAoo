@@ -96,25 +96,13 @@ Widget drawerBuilder ({
 Widget myDivider () => const Divider(
   color: Colors.black,);
 
-Widget myFloatingActionButton () => Padding(
-  padding: const EdgeInsets.all(20.0),
-  child: SizedBox(
-    width: double.infinity,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        FloatingActionButton(
-          onPressed: ()
-          {
-          },
-          child: const Icon(
-            Icons.add,
-            size: 30.0,
-          ),
-        ),
-      ],
-    ),
+Widget myFloatingActionButton() => FloatingActionButton(
+  onPressed: ()
+  {
+  },
+  child: const Icon(
+    Icons.add,
+    size: 30.0,
   ),
 );
 

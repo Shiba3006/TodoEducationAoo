@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do/shared/components/components.dart';
 import 'package:to_do/shared/cubit/states.dart';
+import 'package:to_do/shared/network/cashe_helper.dart';
 
 class ToDoCubit extends Cubit<ToDoState> {
   ToDoCubit() : super(ToDoStateInitial());
@@ -11,11 +12,21 @@ class ToDoCubit extends Cubit<ToDoState> {
   bool isDark = false;
   String subtitleCheckBox = 'Disabled' ;
 
-  void changeThemeMode (bool value) {
-    isDark = value;
-    changeSubtitleCheckBox();
-    emit(ToDoStateChangeThemeMode());
+  void changeThemeMode ({bool? fromShared}) {
+    if(fromShared != null){
+      isDark = fromShared;
+      changeSubtitleCheckBox();
+      emit(ToDoStateChangeThemeMode());
+    }
+    else{
+      isDark = !isDark;
+      CacheHelper.setBoolean(key: 'isDark', value: isDark).then((value) {
+        changeSubtitleCheckBox();
+        emit(ToDoStateChangeThemeMode());
+      });
+    }
   }
+
   void changeSubtitleCheckBox () {
     if ( isDark == false ) { subtitleCheckBox = 'Disabled'; }
     else { subtitleCheckBox = 'Enabled'; }
