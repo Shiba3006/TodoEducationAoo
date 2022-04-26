@@ -18,7 +18,7 @@ class WorkScreen extends StatelessWidget {
         return Scaffold(
           appBar: myAppBar(appBarTitle: appBarTitle),
           drawer: drawerBuilder(context: context, cubit: cubit,),
-          body: myFloatingActionButton(),
+
         );
       },
     );

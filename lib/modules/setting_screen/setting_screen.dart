@@ -25,8 +25,12 @@ class SettingScreen extends StatelessWidget {
                 checkColor: Colors.black,
                 value: cubit.isDark,
                 onChanged: (value) => cubit.changeThemeMode(),
-                title: const Text('Dark Mode',),
-                subtitle: Text(cubit.subtitleCheckBox),
+                title: const Text(
+                  'Dark Mode',
+                ),
+                subtitle: Text(
+                    cubit.subtitleCheckBox,
+                ),
               ),
             ],
           ),

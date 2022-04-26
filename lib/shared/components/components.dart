@@ -96,9 +96,10 @@ Widget drawerBuilder ({
 Widget myDivider () => const Divider(
   color: Colors.black,);
 
-Widget myFloatingActionButton() => FloatingActionButton(
+Widget myFloatingActionButton(context) => FloatingActionButton(
   onPressed: ()
   {
+    ToDoCubit.get(context).createDatabase();
   },
   child: const Icon(
     Icons.add,
@@ -120,6 +121,48 @@ PreferredSizeWidget myAppBar ({required String appBarTitle}) => AppBar(
       ),
     ),
   ],
+);
+
+Widget taskItemBuilder () => Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Container(
+    padding: const EdgeInsets.all(
+      15.0,),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadiusDirectional.circular(20.0),
+      color: Colors.black26,
+    ),
+    child: Row(
+      children: [
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Title',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  'Date',
+                ),
+                Text(
+                  ', Repeat',
+                ),
+              ],
+            ),
+            Text(
+              'List',
+            ),
+          ],
+        ),
+      ],
+    ),
+  ),
 );
 
 void navigateTo ({
